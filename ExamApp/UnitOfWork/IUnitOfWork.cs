@@ -13,6 +13,7 @@ namespace ExamApp.UnitOfWork
 
         IUserRepository UserRepo { get; }
         IChoiceRepository ChoiceRepo { get; }
+        IAnswerRepository AnswerRepo { get; }
         int SaveChanges();
         Task<int> SaveChangesAsync();
     }

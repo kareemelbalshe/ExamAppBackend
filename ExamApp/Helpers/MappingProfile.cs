@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExamApp.DTOs.Answer;
 using ExamApp.DTOs.Choice;
 using ExamApp.DTOs.Exam;
 using ExamApp.DTOs.Question;
@@ -24,6 +25,7 @@ namespace ExamApp.Helpers
             CreateMap<Question, QuestionDto>();
             
             CreateMap<Choice, ChoiceDto>().ReverseMap();
+            CreateMap<Answer, AnswerDto>().ReverseMap();
 
             
         }

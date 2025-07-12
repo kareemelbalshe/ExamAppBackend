@@ -12,6 +12,7 @@ namespace ExamApp.UnitOfWork
         private IQuestionRepository _questions;
         private IUserRepository _users;
         private IChoiceRepository _choices;
+        private IAnswerRepository _answers;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -29,6 +30,9 @@ namespace ExamApp.UnitOfWork
 
         public IChoiceRepository ChoiceRepo=>
             _choices ??= new ChoiceRepository(_context);
+
+        public IAnswerRepository AnswerRepo=>
+            _answers ??= new AnswerRepository(_context);
 
         public Task<int> SaveChangesAsync() => _context.SaveChangesAsync();
 
