@@ -145,5 +145,13 @@ namespace ExamApp.Controllers
             return Success(result);
         }
 
+        public async Task<IActionResult> GetById(int id)
+        {
+            if (id == 0) return NotFound();
+            var student = await _unitOfWork.UserRepo.GetByIdAsync(id);
+            if (student == null) return NotFound();
+            return Success(student);
+        }
+
     }
 }
