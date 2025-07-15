@@ -6,5 +6,6 @@ namespace ExamApp.Repositories.Interface
     {
         Task<List<Result>> GetByStudentIdAsync(int studentId);
         Task<List<Result>> GetByExamIdAsync(int examId);
+        Task<Result?> GetByIdWithAnswersAndChoicesAsync(int resultId);
     }
 }

@@ -51,7 +51,8 @@ namespace ExamApp.Controllers
 
             var token = JwtHelper.GenerateToken(user, _config);
             var role = user.Role;
-            return Success(new { token, role }, "Login successful.");
+            var id = user.Id;
+            return Success(new { token, id, role }, "Login successful.");
         }
 
 

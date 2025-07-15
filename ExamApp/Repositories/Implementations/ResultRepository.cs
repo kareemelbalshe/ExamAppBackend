@@ -64,5 +64,12 @@ namespace ExamApp.Repositories.Implementations
                 .Where(r => r.ExamId == examId)
                 .ToListAsync();
         }
+        public async Task<Result?> GetByIdWithAnswersAndChoicesAsync(int resultId)
+        {
+            return await _context.Results
+                .Include(r => r.Answers)
+                    .ThenInclude(a => a.Choice)
+                .FirstOrDefaultAsync(r => r.Id == resultId);
+        }
     }
 }
