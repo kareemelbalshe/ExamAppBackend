@@ -146,6 +146,9 @@ namespace ExamApp.Controllers
             return Success(result);
         }
 
+
+
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             if (id == 0) return NotFound();
