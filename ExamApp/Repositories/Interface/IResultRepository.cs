@@ -1,4 +1,5 @@
-﻿using ExamApp.Models;
+﻿using ExamApp.DTOs.Result;
+using ExamApp.Models;
 
 namespace ExamApp.Repositories.Interface
 {
@@ -6,6 +7,8 @@ namespace ExamApp.Repositories.Interface
     {
         Task<List<Result>> GetByStudentIdAsync(int studentId);
         Task<List<Result>> GetByExamIdAsync(int examId);
+
         Task<Result?> GetByIdWithAnswersAndChoicesAsync(int resultId);
+        Task<List<StudentResultDTO>> GetByStudentIdWithDetailsAsync(int studentId);
     }
 }

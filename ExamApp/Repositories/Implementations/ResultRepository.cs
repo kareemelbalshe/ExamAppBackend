@@ -1,4 +1,7 @@
-﻿using ExamApp.Models;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using ExamApp.DTOs.Result;
+using ExamApp.Models;
 using ExamApp.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +11,12 @@ namespace ExamApp.Repositories.Implementations
     {
         private readonly ApplicationDbContext _context;
 
-        public ResultRepository(ApplicationDbContext context)
+        private IMapper Mapper { get; }
+
+        public ResultRepository(ApplicationDbContext context, IMapper _mapper)
         {
             _context = context;
+            Mapper = _mapper;
         }
 
         public async Task<List<Result>> GetAllAsync()
@@ -70,6 +76,12 @@ namespace ExamApp.Repositories.Implementations
                 .Include(r => r.Answers)
                     .ThenInclude(a => a.Choice)
                 .FirstOrDefaultAsync(r => r.Id == resultId);
+        }
+
+        public async Task<List<StudentResultDTO>> GetByStudentIdWithDetailsAsync(int studentId)
+        {
+            var results = await _context.Results.Where(r => r.StudentId == studentId).ProjectTo<StudentResultDTO>(Mapper.ConfigurationProvider).ToListAsync();
+            return results;
         }
     }
 }
