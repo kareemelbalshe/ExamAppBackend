@@ -106,8 +106,8 @@ namespace ExamApp.Controllers
 
             var pageData= _unitOfWork.ResultRepo.GetPage(id, page,pageSize);
             if (pageData == null || pageData.Count == 0) return NotFoundResponse();
-            //var mapped = _mapper.Map<List<AnswerWithQuestions>>(pageData);
-            return Success(pageData);
+            var mapped = _mapper.Map<List<AnswerWithQuestions>>(pageData);
+            return Success(mapped);
         }
     }
 }

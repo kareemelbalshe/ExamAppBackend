@@ -17,12 +17,12 @@ public partial class Question
     public string Text { get; set; } = null!;
 
     [InverseProperty("Question")]
-    public virtual ICollection<Answer>? Answers { get; set; } = new List<Answer>();
+    public ICollection<Answer>? Answers { get; set; } = new List<Answer>();
 
     [InverseProperty("Question")]
-    public virtual ICollection<Choice>? Choices { get; set; } = new List<Choice>();
+    public ICollection<Choice>? Choices { get; set; } = new List<Choice>();
 
     [ForeignKey("ExamId")]
     [InverseProperty("Questions")]
-    public virtual Exam? Exam { get; set; }
+    public Exam? Exam { get; set; }
 }

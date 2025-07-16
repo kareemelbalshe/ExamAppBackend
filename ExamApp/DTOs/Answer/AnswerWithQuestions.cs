@@ -13,7 +13,7 @@ namespace ExamApp.DTOs.Answer
         public int? QuestionId { get; set; }
 
         public int? ChoiceId { get; set; }
-        public List<QuestionWithChoicesDto>? Question {  get; set; }
+        public QuestionWithChoicesDto? Question {  get; set; }
 
     }
 }

@@ -32,13 +32,13 @@ public partial class Result
     public DateTime? TakenAt { get; set; }
 
     [InverseProperty("Result")]
-    public virtual ICollection<Answer> Answers { get; set; } = new List<Answer>();
+    public ICollection<Answer> Answers { get; set; } = new List<Answer>();
 
     [ForeignKey("ExamId")]
     [InverseProperty("Results")]
-    public virtual Exam? Exam { get; set; }
+    public Exam? Exam { get; set; }
 
     [ForeignKey("StudentId")]
     [InverseProperty("Results")]
-    public virtual User? Student { get; set; }
+    public User? Student { get; set; }
 }

@@ -32,11 +32,11 @@ public partial class Exam
 
     [ForeignKey("CreatedBy")]
     [InverseProperty("Exams")]
-    public virtual User? CreatedByNavigation { get; set; }
+    public  User? CreatedByNavigation { get; set; }
 
     [InverseProperty("Exam")]
-    public virtual ICollection<Question> Questions { get; set; } = new List<Question>();
+    public ICollection<Question> Questions { get; set; } = new List<Question>();
 
     [InverseProperty("Exam")]
-    public virtual ICollection<Result> Results { get; set; } = new List<Result>();
+    public ICollection<Result> Results { get; set; } = new List<Result>();
 }

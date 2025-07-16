@@ -23,10 +23,11 @@ namespace ExamApp
             var corsPolicyName = "MyCorsPolicy";
 
             // Controllers
-            builder.Services.AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-            }); ;
+            builder.Services.AddControllers();
+            //.AddJsonOptions(options =>
+            //{
+            //    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+            //});
 
             // Swagger (OpenAPI)
             //builder.Services.AddOpenApi();
