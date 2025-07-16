@@ -19,13 +19,13 @@ public partial class Answer
 
     [ForeignKey("ChoiceId")]
     [InverseProperty("Answers")]
-    public virtual Choice? Choice { get; set; }
+    public  Choice? Choice { get; set; }
 
     [ForeignKey("QuestionId")]
     [InverseProperty("Answers")]
-    public virtual Question? Question { get; set; }
+    public Question? Question { get; set; }
 
     [ForeignKey("ResultId")]
     [InverseProperty("Answers")]
-    public virtual Result? Result { get; set; }
+    public Result? Result { get; set; }
 }

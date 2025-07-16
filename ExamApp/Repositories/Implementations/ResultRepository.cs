@@ -93,13 +93,17 @@ namespace ExamApp.Repositories.Implementations
             Console.WriteLine("********************************************************************\nBegin");
             var answer = _context.Answers.AsNoTracking().Where(a=> a.ResultId == resultId);
 
-            answer= answer.Include(a => a.Question).ThenInclude(q => q.Choices);
+            answer= answer
+                           .Include(a => a.Question)
+                           .ThenInclude(q => q.Choices);
             //int courseCount = answer.Count();
 
-            answer = answer.Skip((page - 1) * pageSize)
+            answer = answer.OrderBy(a=> a.Id)
+                            .Skip((page - 1) * pageSize)
                             .Take(pageSize);
 
-            return answer.ToList();
+            return answer
+                        .ToList();
         }
     }
 }

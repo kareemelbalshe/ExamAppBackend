@@ -26,10 +26,10 @@ public partial class User
     public string Role { get; set; } = null!;
 
     [InverseProperty("CreatedByNavigation")]
-    public virtual ICollection<Exam> Exams { get; set; } = new List<Exam>();
+    public ICollection<Exam> Exams { get; set; } = new List<Exam>();
 
     [InverseProperty("Student")]
-    public virtual ICollection<Result> Results { get; set; } = new List<Result>();
+    public  ICollection<Result> Results { get; set; } = new List<Result>();
 
     public bool IsDeleted { get; set; } = false;
 }
