@@ -88,17 +88,17 @@ namespace ExamApp.Repositories.Implementations
         }
 
 
-        public List<Answer> GetPage(int resultId,int page = 1, int pageSize = 10)
+        public List<Answer> GetPage(int resultId, int page = 1, int pageSize = 10)
         {
             Console.WriteLine("********************************************************************\nBegin");
-            var answer = _context.Answers.AsNoTracking().Where(a=> a.ResultId == resultId);
+            var answer = _context.Answers.AsNoTracking().Where(a => a.ResultId == resultId);
 
-            answer= answer
+            answer = answer
                            .Include(a => a.Question)
                            .ThenInclude(q => q.Choices);
             //int courseCount = answer.Count();
 
-            answer = answer.OrderBy(a=> a.Id)
+            answer = answer.OrderBy(a => a.Id)
                             .Skip((page - 1) * pageSize)
                             .Take(pageSize);
 
